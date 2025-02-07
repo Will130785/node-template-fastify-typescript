@@ -1,0 +1,28 @@
+{
+  "name": "template-fastify-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "local": "cross-env NODE_ENV=local nodemon ./src/server.ts",
+    "build": "tsc --project .",
+    "dev": "tsc --project . && cross-env NODE_ENV=development node dist/server",
+    "staging": "tsc --project . && cross-env NODE_ENV=staging node dist/server",
+    "start": "tsc --project . && cross-env NODE_ENV=production node dist/server",
+    "node:dev": "cross-env NODE_ENV=development node server",
+    "node:staging": "cross-env NODE_ENV=staging node server",
+    "node:start": "cross-env NODE_ENV=production node server"
+  },
+  "author": "Will Constable",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "fastify": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
