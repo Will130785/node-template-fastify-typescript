@@ -1,15 +1,20 @@
 import Fastify from 'fastify'
+import routes from './routes'
+import dbConnect from './app/dbConnect'
 const fastify = Fastify({
   logger: true,
 })
 
-fastify.get('/', async function handler(request, reply) {
-  return { hello: 'world' }
-})
+fastify.register(dbConnect)
+fastify.register(routes)
 
-try {
-  fastify.listen({ port: 3000 })
-} catch (err) {
-  fastify.log.error(err)
-  process.exit()
+const start = async () => {
+  try {
+    await fastify.listen({ port: 3000 })
+  } catch (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
 }
+
+start()
